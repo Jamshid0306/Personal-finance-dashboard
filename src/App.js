@@ -3,25 +3,22 @@ import { getExchangeRates } from './services/exchangeRateService';
 import TransactionForm from './components/TransactionForm';
 import TransactionList from './components/TransactionList';
 import Dashboard from './components/Dashboard';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap CSS import qilindi
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [transactions, setTransactions] = useState([]);
   const [exchangeRates, setExchangeRates] = useState({});
   const [baseCurrency, setBaseCurrency] = useState('USD');
 
-  // Local Storage dan ma'lumotlarni olish
   useEffect(() => {
     const storedTransactions = JSON.parse(localStorage.getItem('transactions')) || [];
     setTransactions(storedTransactions);
   }, []);
 
-  // Local Storage ga saqlash
   useEffect(() => {
     localStorage.setItem('transactions', JSON.stringify(transactions));
   }, [transactions]);
 
-  // Valyuta kurslarini olish
   useEffect(() => {
     const fetchExchangeRates = async () => {
       const rates = await getExchangeRates(baseCurrency);
@@ -30,7 +27,6 @@ function App() {
     fetchExchangeRates();
   }, [baseCurrency]);
 
-  // Yangi tranzaksiyani qo'shish
   const addTransaction = (transaction) => {
     setTransactions((prevTransactions) => [...prevTransactions, transaction]);
   };

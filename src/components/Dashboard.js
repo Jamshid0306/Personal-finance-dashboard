@@ -7,7 +7,6 @@ import {
   Legend,
 } from 'chart.js';
 
-// Register Chart.js elements
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Dashboard = ({ transactions, exchangeRates, baseCurrency }) => {
