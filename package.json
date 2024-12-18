@@ -20,6 +20,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "babel": {
+    "presets": ["@babel/preset-env", "@babel/preset-react"],
+    "plugins": ["@babel/plugin-proposal-private-property-in-object"]
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -37,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
